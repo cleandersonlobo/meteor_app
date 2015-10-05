@@ -1,0 +1,27 @@
+<head>
+  <title> App Meteor</title>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Primeira Aplicação Meteor</h1>
+    <form class="novo-teste">
+      <input type="text" name="titulo" placeholder="Digite seu nome">
+      <input type="submit" value="Enviar">
+    </form>
+  </header>
+  <ul>
+    {{#each testes}}
+      {{> teste}}
+    {{/each}}
+  </ul>
+</div>
+</body>
+
+<template name="teste">
+  <li>
+      <input  type="checkbox" checked="{{checked}}" class=".toggle-checked">
+      <span class="text">{{titulo}}</span>
+      <button class="delete">Remover</button>
+  </li>
+</template>
