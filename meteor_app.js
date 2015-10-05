@@ -20,6 +20,10 @@ if (Meteor.isClient) {
   });
 
   Template.teste.events({
+    'click .toggle-checked': function(){
+      Testes.update(this._id, {$set:{checked: !this.checked}});
+    },
+
     'click .delete': function(){
         Testes.remove(this._id);
     }
