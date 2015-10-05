@@ -3,16 +3,27 @@
 </head>
 <body>
 <div class="container">
+  {{> loginButtons}}
   <header>
     <h1>Primeira Aplicação Meteor</h1>
     <label class="hide-completo">
         <input type="checkbox" checked="{{hideCompleto}}">
         Ocultar Mensagens Completas
     </label>
+    {{#if currentUser}}
     <form class="novo-teste">
-      <input type="text" name="titulo" placeholder="Digite seu nome">
+      <input type="text" name="titulo" placeholder="Digite uma frase">
+      <select name="mes" id="mes">
+        <option value="Janeiro">Janeiro</option>
+        <option value="Fevereiro">Fevereiro</option>
+        <option value="Marco">Março</option>
+        <option value="Abril">Abril</option>
+        <option value="Maio">Maio</option>
+        <option value="Junho">Junho</option>
+      </select>
       <input type="submit" value="Enviar">
     </form>
+    {{/if}}
   </header>
   <ul>
     {{#each testes}}
@@ -27,6 +38,7 @@
   <li class="{{#if checked}}checked{{/if}}">
       <input  type="checkbox" checked="{{checked}}" class="toggle-checked">
       <span class="text">{{titulo}}</span>
+      <span class="mes"> | Mês : {{mes}}</span>
       <button class="delete">Remover</button>
   </li>
 </template>

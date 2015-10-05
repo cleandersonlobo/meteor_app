@@ -18,8 +18,10 @@ if (Meteor.isClient) {
   Template.body.events({
     'submit .novo-teste' :function(event){
         var titulo = event.target.titulo.value;
+        var mes = event.target.mes.value;
         Testes.insert({
           titulo: titulo,
+          mes: mes,
           createdAt: new Date()
         });
         event.target.titulo.value = "";
@@ -39,6 +41,10 @@ if (Meteor.isClient) {
     'click .delete': function(){
         Testes.remove(this._id);
     }
+  });
+
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
   });
 
 }
