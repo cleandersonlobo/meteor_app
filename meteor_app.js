@@ -3,7 +3,15 @@ Testes = new Mongo.Collection("testes");
 if (Meteor.isClient) {
   Template.body.helpers({
     testes : function () {
+      if(Session.get("hideCompleto")){
+        return Testes.find({checked: {$ne: true}});
+      }else{
       return Testes.find();
+      }
+    },
+
+    hideCompleto : function(){
+      return Session.get("hideCompleto");
     }
   });
 
@@ -16,6 +24,10 @@ if (Meteor.isClient) {
         });
         event.target.titulo.value = "";
         return false;
+    },
+
+    'change .hide-completo': function(event){
+      Session.set('hideCompleto', event.target.checked);
     }
   });
 
